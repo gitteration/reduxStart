@@ -9,10 +9,17 @@ export function Text() {
 	const text = useSelector(selectText);
 	const dispatch = useDispatch();
 	const [addText , setAddText] = useState('');
+	
+	const onChange = (e) => setAddText(e.target.value);
+	const onReset = () => setAddText('');
+	const onClick = () => {
+		dispatch(inputText(addText))
+		onReset();
+	};
 	return (
 		<div>
-			<input type="text" onChange={(e) => setAddText(e.target.value)}></input>
-			<button onClick={() => dispatch(inputText(addText))}>입력</button>
+			<input type="text" onChange={onChange} value={addText}/>
+			<button onClick={onClick}>입력</button>
 			<pre>
 				{text}
 			</pre>
