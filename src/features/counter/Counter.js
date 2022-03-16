@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   decrement,
@@ -15,7 +15,11 @@ export function Counter() {
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
   const incrementValue = Number(incrementAmount) || 0;
-  
+
+  useEffect(() => {
+    document.title = `ok ${incrementAmount}`;
+  })
+
   return (
     <div >
       <div className={styles.row}>
